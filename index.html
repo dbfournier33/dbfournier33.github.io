@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Don Fournier — Director of DevOps</title>
+<meta name="description" content="Don Fournier — Director of DevOps. Cloud & platform engineering, enterprise integration, AI platforms, and distributed-team leadership.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13243a; --navy2:#1f3a5f; --navy3:#2c4d77;
+    --accent:#2dd4bf; --accent2:#38bdf8;
+    --ink:#1b2733; --muted:#5e6b7a; --faint:#8a97a6;
+    --bg:#ffffff; --bg-soft:#f4f7fa; --card:#ffffff; --rule:#e4ebf2;
+    --shadow:0 1px 3px rgba(19,36,58,.06),0 8px 24px rgba(19,36,58,.06);
+    --shadow-lg:0 12px 40px rgba(19,36,58,.14);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;}
+  body{font-family:"Inter",system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{line-height:1.18;letter-spacing:-.01em;}
+  .serif{font-family:"Fraunces",Georgia,serif;font-weight:600;}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+
+  /* ---- Nav ---- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--rule);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:16px;color:var(--navy);}
+  .brand span{color:var(--accent);}
+  .navlinks{display:flex;gap:26px;align-items:center;}
+  .navlinks a{font-size:14px;font-weight:500;color:var(--muted);transition:color .15s;}
+  .navlinks a:hover{color:var(--navy);}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;border-radius:9px;padding:9px 16px;transition:transform .12s,box-shadow .15s,background .15s;}
+  .btn-primary{background:var(--navy);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(19,36,58,.22);}
+  .btn-ghost{border:1px solid var(--rule);color:var(--navy);background:#fff;}
+  .btn-ghost:hover{border-color:var(--navy3);transform:translateY(-1px);}
+  .navtoggle{display:none;}
+  @media(max-width:760px){ .navlinks a:not(.btn){display:none;} }
+
+  /* ---- Hero ---- */
+  .hero{position:relative;background:radial-gradient(1200px 500px at 70% -10%,rgba(45,212,191,.18),transparent 60%),linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#eaf1f8;overflow:hidden;}
+  .hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(800px 380px at 75% 0%,#000,transparent 75%);pointer-events:none;}
+  .hero .wrap{position:relative;z-index:1;padding:76px 24px 64px;}
+  .hero .eyebrow{color:var(--accent);}
+  .hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;letter-spacing:-.025em;margin:14px 0 6px;color:#fff;}
+  .hero .role{font-size:clamp(17px,2.4vw,22px);font-weight:600;color:#bfe9e2;}
+  .hero .tagline{margin-top:14px;max-width:660px;font-size:clamp(15px,1.8vw,17px);color:#c4d2e1;}
+  .hero .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;}
+  .hero .btn-primary{background:var(--accent);color:#06251f;}
+  .hero .btn-primary:hover{box-shadow:0 10px 26px rgba(45,212,191,.35);}
+  .hero .btn-ghost{background:transparent;border-color:rgba(255,255,255,.28);color:#eaf1f8;}
+  .hero .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06);}
+  .meta{margin-top:26px;display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:#aebfd0;}
+  .meta b{color:#dce7f1;font-weight:600;}
+
+  /* ---- Stats ---- */
+  .stats{background:var(--navy);color:#fff;}
+  .stats .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;padding:0 24px;transform:translateY(-26px);}
+  .stat{background:linear-gradient(180deg,#fff,#fbfdff);color:var(--ink);border:1px solid var(--rule);border-radius:14px;padding:16px 14px;box-shadow:var(--shadow);}
+  .stat .n{font-family:"Fraunces",serif;font-weight:600;font-size:24px;color:var(--navy2);line-height:1.05;letter-spacing:-.02em;}
+  .stat .l{font-size:11.5px;color:var(--muted);margin-top:5px;line-height:1.35;}
+  @media(max-width:900px){ .stats .wrap{grid-template-columns:repeat(3,1fr);} }
+  @media(max-width:520px){ .stats .wrap{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---- Sections ---- */
+  section.block{padding:58px 0;}
+  section.block.alt{background:var(--bg-soft);}
+  .sec-head{max-width:680px;margin-bottom:30px;}
+  .sec-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:800;color:var(--navy);margin-top:8px;letter-spacing:-.02em;}
+  .sec-head p{color:var(--muted);margin-top:10px;font-size:16px;}
+
+  .lead{font-size:18px;color:#34424f;max-width:780px;}
+  .lead b{color:var(--navy);font-weight:700;}
+  .arc{margin-top:22px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .arc .step{background:#fff;border:1px solid var(--rule);border-radius:999px;padding:7px 14px;font-size:13px;font-weight:600;color:var(--navy);box-shadow:var(--shadow);}
+  .arc .ar{color:var(--accent);font-weight:800;}
+
+  /* ---- Case studies ---- */
+  .cases{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  @media(max-width:780px){ .cases{grid-template-columns:1fr;} }
+  .case{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:22px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .2s,border-color .2s;}
+  .case:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:#cfe9e3;}
+  .case .num{font-family:"Fraunces",serif;font-size:13px;color:var(--accent);font-weight:600;}
+  .case h3{font-size:18.5px;font-weight:700;color:var(--navy);margin:4px 0 8px;}
+  .case .impact{font-size:14.5px;color:#33424f;font-weight:500;}
+  .case .impact b{color:var(--navy2);}
+  .case details{margin-top:13px;border-top:1px dashed var(--rule);padding-top:12px;}
+  .case summary{cursor:pointer;font-size:13px;font-weight:600;color:var(--accent2);list-style:none;display:inline-flex;align-items:center;gap:6px;}
+  .case summary::-webkit-details-marker{display:none;}
+  .case summary::before{content:"+";font-weight:800;color:var(--accent);}
+  .case details[open] summary::before{content:"–";}
+  .case details .body{margin-top:12px;font-size:13.5px;color:#46535f;}
+  .case .body .row{margin:9px 0;}
+  .case .body .row .k{font-size:11px;text-transform:uppercase;letter-spacing:.1em;font-weight:700;color:var(--faint);display:block;margin-bottom:3px;}
+  .case .body ul{margin:4px 0 0 16px;}
+  .case .body li{margin:3px 0;}
+  .tags{margin-top:13px;display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{font-size:11px;font-weight:600;color:var(--navy2);background:#eef5f9;border:1px solid #dceaf2;border-radius:6px;padding:3px 8px;}
+
+  /* ---- Capabilities ---- */
+  .caps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media(max-width:780px){ .caps{grid-template-columns:1fr;} }
+  .cap{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:18px 20px;box-shadow:var(--shadow);}
+  .cap h4{font-size:14px;color:var(--navy);font-weight:700;margin-bottom:9px;display:flex;align-items:center;gap:8px;}
+  .cap h4 .dot{width:8px;height:8px;border-radius:3px;background:var(--accent);display:inline-block;}
+  .cap .tags .tag{background:#f4f7fa;}
+
+  /* ---- Experience ---- */
+  .xp{border-left:2px solid var(--rule);margin-left:6px;padding-left:22px;}
+  .xp .item{position:relative;padding-bottom:20px;}
+  .xp .item::before{content:"";position:absolute;left:-29px;top:5px;width:11px;height:11px;border-radius:50%;background:#fff;border:2.5px solid var(--accent);}
+  .xp .item.cur::before{background:var(--accent);}
+  .xp .co{font-weight:700;color:var(--navy);font-size:16px;}
+  .xp .ti{color:var(--navy3);font-weight:600;font-size:14px;}
+  .xp .dt{color:var(--faint);font-size:13px;}
+  .xp .ds{color:var(--muted);font-size:13.5px;margin-top:3px;max-width:720px;}
+
+  /* ---- Contact ---- */
+  .contact{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#eaf1f8;border-radius:20px;padding:42px;text-align:center;}
+  .contact h2{font-size:clamp(24px,3.4vw,32px);font-weight:800;color:#fff;}
+  .contact p{color:#c4d2e1;margin:10px auto 22px;max-width:540px;}
+  .contact .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .contact .btn-primary{background:var(--accent);color:#06251f;}
+  .contact .btn-ghost{border-color:rgba(255,255,255,.3);color:#eaf1f8;}
+
+  footer{padding:30px 0;text-align:center;color:var(--faint);font-size:13px;border-top:1px solid var(--rule);}
+  footer .brand{font-size:14px;}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand">Don <span>Fournier</span></a>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#capabilities">Capabilities</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="assets/Don_Fournier_Resume.pdf" target="_blank" rel="noopener">Résumé ↓</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Director of DevOps · Cloud &amp; Platform Engineering</div>
+    <h1>Don Fournier</h1>
+    <div class="role">I architect and ship production systems — then build the teams that run them.</div>
+    <p class="tagline">Director-level engineering leader who advanced from Senior Systems Administrator to department leadership in ~18 months while personally taking enterprise systems from zero to production. Enterprise integration, cloud modernization (AWS + Azure), Kubernetes, and AI/LLM platforms — paired with org design, hiring, and incident command.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#work">View selected work →</a>
+      <a class="btn btn-ghost" href="assets/Don_Fournier_Resume.pdf" target="_blank" rel="noopener">Download résumé</a>
+    </div>
+    <div class="meta">
+      <span><b>📍 Fort Worth, TX</b> · Open to Remote</span>
+      <span><b>✉</b> <a href="mailto:dbfournier3@gmail.com">dbfournier3@gmail.com</a></span>
+      <span id="links"></span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ STATS ============ -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="n">3 weeks</div><div class="l">3-system integration, zero → production</div></div>
+    <div class="stat"><div class="n">1M+</div><div class="l">records migrated, zero-downtime cutover</div></div>
+    <div class="stat"><div class="n">~$300K</div><div class="l">annual cloud spend reduced</div></div>
+    <div class="stat"><div class="n">500+ tok/s</div><div class="l">autonomous AI agent throughput</div></div>
+    <div class="stat"><div class="n">~59</div><div class="l">repositories security-audited</div></div>
+    <div class="stat"><div class="n">~18 mo</div><div class="l">Sysadmin → Director</div></div>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Profile</div><h2>Hands-on at the keyboard, strategic at the org level.</h2></div>
+    <p class="lead">I'm a DevOps and platform-engineering leader who is just as comfortable <b>commanding a live production incident</b> as <b>authoring the operating model the team runs on</b>. Over the last ~18 months I went from Senior Systems Administrator to running applications, architecture, cloud, and security for a high-volume e-commerce health &amp; wellness business — while personally architecting and shipping the systems below.</p>
+    <div class="arc">
+      <span class="step">Senior Systems Administrator</span><span class="ar">→</span>
+      <span class="step">Infrastructure Consultant</span><span class="ar">→</span>
+      <span class="step">Manager, Infrastructure</span><span class="ar">→</span>
+      <span class="step">Manager, DevOps</span><span class="ar">→</span>
+      <span class="step">Director of DevOps</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="block alt" id="work">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Selected Work</div><h2>Case studies</h2><p>Six representative projects spanning integration, data, AI platforms, cloud/DevOps, security, and leadership. Details are genericized to respect confidentiality; the engineering and impact are real.</p></div>
+    <div class="cases">
+
+      <div class="case">
+        <div class="num">01 · Flagship</div>
+        <h3>Enterprise Order-Integration Middleware</h3>
+        <p class="impact">Took a <b>three-system enterprise integration</b> (legacy order DB · Dynamics 365 ERP · third-party WMS) from <b>zero to production in ~3 weeks</b> — as sole architect, builder, and production owner.</p>
+        <div class="tags"><span class="tag">.NET 8</span><span class="tag">Azure Service Bus</span><span class="tag">Functions</span><span class="tag">D365 F&amp;O</span><span class="tag">SQL Server</span><span class="tag">EKS</span><span class="tag">idempotency</span></div>
+        <details>
+          <summary>Read the case study</summary>
+          <div class="body">
+            <div class="row"><span class="k">Challenge</span>Three disconnected systems with no reliable bridge; orders, shipments, inventory, and revenue recognition falling out of sync as the aging legacy connector was retired.</div>
+            <div class="row"><span class="k">What I did</span>
+              <ul>
+                <li>Built a custom .NET 8 middleware: on-prem polling service, Azure App Service adapters + Functions, Service Bus eventing, bidirectional sync/writeback.</li>
+                <li>Deterministic idempotency &amp; message dedup; ERP-side reconciliation build; SSO-protected ops dashboard on Kubernetes.</li>
+                <li>Stood up the full production tier (infra, secrets, identity, schema); ~525 automated tests; AI-accelerated delivery.</li>
+              </ul></div>
+            <div class="row"><span class="k">Result</span>
+              <ul>
+                <li>Zero → production in ~3 weeks with zero ERP downtime (a comparable effort typically runs 9–18 months for a 3–4 person team).</li>
+                <li>Reconciled a multi-million-dollar revenue-recognition discrepancy; drained multi-hundred-order backlogs.</li>
+                <li>Restored a failed pipeline by root-causing four chained cross-system failures in a single session.</li>
+              </ul></div>
+          </div>
+        </details>
+      </div>
+
+      <div class="case">
+        <div class="num">02</div>
+        <h3>E-Commerce Replatform &amp; 1M+ Record Migration</h3>
+        <p class="impact">Led a <b>zero-downtime replatform</b> and migration of <b>1M+ customer records</b> across three integrated systems to a modern cloud storefront, with near-perfect data integrity.</p>
+        <div class="tags"><span class="tag">Shopify Plus</span><span class="tag">GraphQL</span><span class="tag">Azure SQL</span><span class="tag">Python</span><span class="tag">CI/CD</span></div>
+        <details>
+          <summary>Read the case study</summary>
+          <div class="body">
+            <div class="row"><span class="k">Challenge</span>A legacy stack with years of data defects had to replatform across storefront, CRM, B2B portal, payments, and loyalty — with no customer-data loss or order disruption.</div>
+            <div class="row"><span class="k">What I did</span>
+              <ul>
+                <li>Architected a phased multi-system cutover with boundary-filtered migration and audit trails at every gate.</li>
+                <li>Bulk tagging/metafield operations, automated SEO redirect validation, and automated promo reconciliation.</li>
+                <li>Ran multiple production builds per day during the window.</li>
+              </ul></div>
+            <div class="row"><span class="k">Result</span>
+              <ul>
+                <li>1M+ records migrated with near-perfect integrity; known data-integrity issues cleared before launch.</li>
+                <li>Zero rollbacks through a live, high-frequency deployment window.</li>
+              </ul></div>
+          </div>
+        </details>
+      </div>
+
+      <div class="case">
+        <div class="num">03</div>
+        <h3>Private Multi-Model AI Inference &amp; Agent Control Plane</h3>
+        <p class="impact">Designed and deployed a private, <b>zero-trust AI inference + agent control plane</b> — removing a terms-of-service compliance risk in one sprint and enabling <b>500+ tok/s</b> autonomous workflows with a human approval-queue safety net.</p>
+        <div class="tags"><span class="tag">MCP</span><span class="tag">Node.js</span><span class="tag">FastAPI</span><span class="tag">multi-model</span><span class="tag">Tailscale</span><span class="tag">MS Graph</span></div>
+        <details>
+          <summary>Read the case study</summary>
+          <div class="body">
+            <div class="row"><span class="k">Challenge</span>Autonomous agents needed fast, cost-efficient inference without routing consumer-auth sessions through automation (a ToS risk), while keeping premium reasoning available.</div>
+            <div class="row"><span class="k">What I did</span>
+              <ul>
+                <li>Three-tier inference: high-throughput open-model API (bulk), premium frontier API (hard reasoning), local large-model fallback.</li>
+                <li>MCP gateway / agent control plane on a private zero-trust mesh; ~20 integrated tools incl. M365 Graph ops and human approval queues.</li>
+              </ul></div>
+            <div class="row"><span class="k">Result</span>
+              <ul>
+                <li>Removed the ToS-compliance risk in a single sprint; 500+ tok/s at reduced per-token cost with a governed approval-queue safety net.</li>
+              </ul></div>
+          </div>
+        </details>
+      </div>
+
+      <div class="case">
+        <div class="num">04</div>
+        <h3>PWA Platform &amp; Multi-Service CI/CD on EKS</h3>
+        <p class="impact">Architected a <b>tier-gated PWA platform on Kubernetes</b> with real-time observability and standardized CI/CD across six microservices — <b>~10-minute commit-to-live</b> with automated rollback.</p>
+        <div class="tags"><span class="tag">AWS EKS</span><span class="tag">Terraform</span><span class="tag">CloudWatch</span><span class="tag">NestJS</span><span class="tag">gRPC</span><span class="tag">CodeBuild</span><span class="tag">pgvector</span></div>
+        <details>
+          <summary>Read the case study</summary>
+          <div class="body">
+            <div class="row"><span class="k">Challenge</span>A high-traffic PWA needed reliable tier-gating with real-time quota enforcement and observability; six services needed dependable build-test-deploy with safe rollback.</div>
+            <div class="row"><span class="k">What I did</span>
+              <ul>
+                <li>EKS tier-gating (NestJS BFF + gRPC); CloudWatch custom metrics/alarms; Terraform modules for K8s, Postgres/pgvector, isolated S3.</li>
+                <li>Standardized Azure DevOps → CodeBuild → ECR → kubectl with pre-deploy gates, automated rollback, and crash-loop detection.</li>
+              </ul></div>
+            <div class="row"><span class="k">Result</span>
+              <ul>
+                <li>Quota-failure detection cut from manual checks to &lt;60 seconds; ~10-minute commit-to-live across six services; zero CI/CD-corruption incidents.</li>
+              </ul></div>
+          </div>
+        </details>
+      </div>
+
+      <div class="case">
+        <div class="num">05</div>
+        <h3>Security Incident Response &amp; Remediation</h3>
+        <p class="impact">Served as <b>incident commander</b> — driving a security incident from detection to closure with <b>zero customer-facing downtime</b>, then authoring the reusable response runbook.</p>
+        <div class="tags"><span class="tag">incident command</span><span class="tag">remediation</span><span class="tag">evidence preservation</span><span class="tag">runbook</span></div>
+        <details>
+          <summary>Read the case study</summary>
+          <div class="body">
+            <div class="row"><span class="k">What I did</span>
+              <ul>
+                <li>Ran the response from detection through closure; coordinated cross-functional teams and external parties under a single line of command.</li>
+                <li>Executed remediation, preserved evidence to a defensible standard, and stood up post-incident monitoring.</li>
+              </ul></div>
+            <div class="row"><span class="k">Result</span>Contained and remediated with zero customer-facing downtime; left a reusable, documented response process where there had been ad-hoc handling. <em>(Kept high-level by design — no incident specifics.)</em></div>
+          </div>
+        </details>
+      </div>
+
+      <div class="case">
+        <div class="num">06</div>
+        <h3>DevOps Operating Model &amp; Global Delivery</h3>
+        <p class="impact">Authored the <b>operating model and operations playbook</b> for a <b>~20+ person, three-geography</b> engineering org — coverage model, incident process, standards, org structure, hiring roadmap, and onboarding curriculum.</p>
+        <div class="tags"><span class="tag">org design</span><span class="tag">follow-the-sun</span><span class="tag">incident process</span><span class="tag">AWS multi-account</span><span class="tag">SLAs/KPIs</span></div>
+        <details>
+          <summary>Read the case study</summary>
+          <div class="body">
+            <div class="row"><span class="k">What I did</span>
+              <ul>
+                <li>Follow-the-sun coverage/handoff across three time zones; multi-environment AWS ops standard (5 environments); P1/P2/P3 incident classification + post-mortems.</li>
+                <li>Access/secrets governance; defined SLAs/KPIs; org structure, phased hiring roadmap, and a 3-week role-specific onboarding curriculum.</li>
+              </ul></div>
+            <div class="row"><span class="k">Result</span>Established the operating standard, coverage model, and onboarding for a ~20+ person, three-geography organization. <em>(KPIs are targets I defined, not claimed results.)</em></div>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPABILITIES ============ -->
+<section class="block" id="capabilities">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Capabilities</div><h2>What I bring</h2></div>
+    <div class="caps">
+      <div class="cap"><h4><span class="dot"></span>Cloud &amp; Infrastructure</h4><div class="tags"><span class="tag">AWS EKS</span><span class="tag">EC2</span><span class="tag">RDS</span><span class="tag">CloudWatch</span><span class="tag">IAM</span><span class="tag">Secrets Manager</span><span class="tag">CodeBuild</span><span class="tag">VPC</span><span class="tag">S3</span><span class="tag">Cognito</span><span class="tag">Azure App Service</span><span class="tag">Functions</span><span class="tag">Service Bus</span><span class="tag">Key Vault</span><span class="tag">Entra ID</span></div></div>
+      <div class="cap"><h4><span class="dot"></span>DevOps &amp; IaC</h4><div class="tags"><span class="tag">Terraform</span><span class="tag">Bicep</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Kustomize</span><span class="tag">ArgoCD</span><span class="tag">Azure DevOps</span><span class="tag">GitHub Actions</span><span class="tag">observability</span><span class="tag">FinOps</span></div></div>
+      <div class="cap"><h4><span class="dot"></span>Integration &amp; Data</h4><div class="tags"><span class="tag">Dynamics 365 F&amp;O</span><span class="tag">OData</span><span class="tag">event-driven</span><span class="tag">idempotency</span><span class="tag">distributed systems</span><span class="tag">PostgreSQL</span><span class="tag">SQL Server</span><span class="tag">ETL</span><span class="tag">data migration</span></div></div>
+      <div class="cap"><h4><span class="dot"></span>AI / Platform</h4><div class="tags"><span class="tag">LLM inference</span><span class="tag">agent orchestration</span><span class="tag">multi-model routing</span><span class="tag">MCP servers</span><span class="tag">RAG</span><span class="tag">Microsoft Graph</span><span class="tag">zero-trust mesh</span></div></div>
+      <div class="cap"><h4><span class="dot"></span>Languages</h4><div class="tags"><span class="tag">C# / .NET 8</span><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">SQL (T-SQL)</span></div></div>
+      <div class="cap"><h4><span class="dot"></span>Leadership</h4><div class="tags"><span class="tag">org design</span><span class="tag">hiring</span><span class="tag">vendor/MSA governance</span><span class="tag">incident command</span><span class="tag">executive reporting</span><span class="tag">distributed teams</span><span class="tag">PCI-DSS</span><span class="tag">HIPAA</span><span class="tag">SOC 2</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ EXPERIENCE ============ -->
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">Experience</div><h2>Track record</h2></div>
+    <div class="xp">
+      <div class="item cur">
+        <div class="co">Mercola Health Systems</div>
+        <div class="ti">Director of DevOps &amp; Application Development</div>
+        <div class="dt">Dec 2025 – Present · Cape Coral, FL → Remote</div>
+        <div class="ds">Advanced from contract consultant to department leadership in under a year (Manager of DevOps → Manager of Infrastructure → Director). Scope spans applications, architecture, cloud, and security for a high-volume e-commerce health &amp; wellness business.</div>
+      </div>
+      <div class="item">
+        <div class="co">Structure Medical LLC</div>
+        <div class="ti">Senior Systems Administrator</div>
+        <div class="dt">Jun 2023 – Nov 2024 · Naples, FL</div>
+        <div class="ds">Enterprise network infrastructure (switches, routers, firewalls), VMware, and Windows Server; reduced downtime via proactive monitoring and partnered on firewall/IPS deployment.</div>
+      </div>
+      <div class="item">
+        <div class="co">Fischer Identity</div>
+        <div class="ti">Managed Service Provider Engineer</div>
+        <div class="dt">Feb 2022 – May 2023 · Naples, FL</div>
+        <div class="ds">Active Directory and access policy under least-privilege/compliance; identity-management/SSO workflows; Azure and AWS cloud-networking integrations.</div>
+      </div>
+      <div class="item">
+        <div class="co">Linn-Benton Community College</div>
+        <div class="ti">IT Support Specialist</div>
+        <div class="dt">Mar 2019 – Feb 2022 · Albany, OR</div>
+        <div class="ds">Campus-wide connectivity and wireless infrastructure; secure remote access for hybrid operations during the COVID-19 transition.</div>
+      </div>
+      <div class="item">
+        <div class="co">United States Navy</div>
+        <div class="ti">Information Technology Specialist</div>
+        <div class="dt">Oct 2003 – May 2018</div>
+        <div class="ds">Tier 1/2 network and communications support across multiple duty stations over a 15-year career in mission-critical environments; multiple commendations for technical excellence.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <h2>Let's talk</h2>
+      <p>Open to director-level DevOps, platform-engineering, and cloud-architecture roles — remote or Fort Worth, TX.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="mailto:dbfournier3@gmail.com">✉ dbfournier3@gmail.com</a>
+        <a class="btn btn-ghost" href="assets/Don_Fournier_Resume.pdf" target="_blank" rel="noopener">Download résumé ↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Don <span style="color:var(--accent)">Fournier</span></div>
+    <div style="margin-top:6px">Director of DevOps · Cloud &amp; Platform Engineering · Fort Worth, TX</div>
+  </div>
+</footer>
+
+<script>
+  // Optional profile links — fill these in and they'll appear in the hero + contact.
+  const LINKS = { linkedin: "", github: "" };
+  (function(){
+    const el = document.getElementById('links');
+    const parts = [];
+    if (LINKS.linkedin) parts.push('<b>in</b> <a href="'+LINKS.linkedin+'" target="_blank" rel="noopener">LinkedIn</a>');
+    if (LINKS.github)   parts.push('<b>gh</b> <a href="'+LINKS.github+'" target="_blank" rel="noopener">GitHub</a>');
+    if (el) el.innerHTML = parts.join('&nbsp;&nbsp;·&nbsp;&nbsp;');
+  })();
+</script>
+</body>
+</html>
