@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sample Audit Deliverables — Don Fournier</title>
+<meta name="description" content="What an AI Readiness Audit actually delivers — a scored report card and a prioritized remediation roadmap. Sample deliverables from Don Fournier, independent AI & systems consultant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13243a; --navy2:#1f3a5f; --accent:#2dd4bf; --ink:#1b2733; --muted:#5e6b7a; --faint:#8a97a6;
+    --bg:#ffffff; --soft:#f4f7fa; --rule:#e4ebf2;
+    --gA:#2e8b57; --gB:#3f8f5e; --gC:#c9820a; --gD:#c0392b;
+    --shadow:0 1px 3px rgba(19,36,58,.06),0 10px 30px rgba(19,36,58,.08);
+    --maxw:960px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Inter",system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--soft);line-height:1.55;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px;}
+  .serif{font-family:"Fraunces",Georgia,serif;}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--rule);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:16px;color:var(--navy);}
+  .brand span{color:var(--accent);}
+  .navr{display:flex;gap:18px;align-items:center;}
+  .navr a{font-size:13.5px;font-weight:600;color:var(--muted);}
+  .navr a:hover{color:var(--navy);}
+  .btn{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:13.5px;border-radius:9px;padding:8px 15px;}
+  .btn-primary{background:var(--navy);color:#fff;}
+
+  header.intro{padding:46px 0 26px;}
+  .eyebrow{font-size:11.5px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;color:#1f7a6b;}
+  header.intro h1{font-size:clamp(26px,4.4vw,40px);font-weight:800;color:var(--navy);letter-spacing:-.025em;margin:12px 0 12px;max-width:760px;}
+  header.intro p{font-size:16.5px;color:var(--muted);max-width:680px;}
+  header.intro p b{color:var(--ink);font-weight:600;}
+
+  section.block{padding:14px 0 26px;}
+  .lbl{font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:22px 0 12px;}
+
+  /* ---- shared card ---- */
+  .card{background:#fff;border:1px solid var(--rule);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;}
+  .card .ctop{display:flex;justify-content:space-between;align-items:center;padding:16px 26px;border-bottom:1px solid var(--rule);}
+  .lh{font-size:11.5px;font-weight:800;letter-spacing:.14em;color:var(--ink);text-transform:uppercase;}
+  .lh span{color:var(--muted);font-weight:600;letter-spacing:.03em;text-transform:none;display:block;font-size:11px;margin-top:2px;}
+  .pill{font-size:10.5px;font-weight:800;letter-spacing:.1em;color:#1f5f73;background:#e8f3f6;border:1px solid #cfe6ec;border-radius:999px;padding:5px 11px;text-transform:uppercase;}
+  .chd{padding:22px 26px 4px;}
+  .chd h2{font-size:25px;font-weight:800;color:var(--navy2);letter-spacing:-.02em;}
+  .chd p{color:var(--muted);font-size:14px;margin-top:5px;}
+
+  /* ---- report card ---- */
+  .band{display:flex;align-items:center;gap:20px;margin:18px 26px;padding:18px 22px;background:var(--soft);border:1px solid var(--rule);border-radius:14px;}
+  .score{width:88px;height:88px;flex:none;border-radius:50%;background:var(--navy2);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;}
+  .score b{font-size:34px;font-weight:800;line-height:1;}
+  .score span{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;margin-top:3px;color:#bcd;}
+  .band .t{font-size:17px;font-weight:800;color:var(--navy2);}
+  .band .s{color:#46535f;font-size:13.5px;margin-top:3px;}
+  .band .stat{margin-left:auto;text-align:right;flex:none;}
+  .band .stat b{display:block;font-size:23px;color:#1f5f73;font-weight:800;}
+  .band .stat span{font-size:11px;color:var(--muted);}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;padding:4px 26px 8px;}
+  .row{display:flex;align-items:flex-start;gap:11px;padding:10px 0;border-bottom:1px solid #eef2f6;}
+  .g{flex:none;width:42px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#fff;}
+  .g.A{background:var(--gA);} .g.B{background:var(--gB);} .g.C{background:var(--gC);} .g.D{background:var(--gD);}
+  .rt b{font-size:14px;color:var(--ink);} .rt p{font-size:12.5px;color:var(--muted);margin-top:2px;line-height:1.35;}
+  .findsec{padding:6px 26px 4px;}
+  .findsec .flbl{font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:8px 0 2px;}
+  .frow{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed var(--rule);font-size:13.5px;}
+  .frow span{color:#33424f;} .frow b{color:#1f5f73;white-space:nowrap;}
+  .next{margin:14px 26px 22px;padding:13px 20px;background:var(--navy2);color:#eaf1f8;border-radius:12px;font-size:13.5px;}
+  .next b{color:#fff;}
+
+  /* ---- roadmap ---- */
+  .phase{margin:0 26px 14px;border:1px solid var(--rule);border-radius:13px;overflow:hidden;}
+  .phase .ph{display:flex;align-items:baseline;gap:10px;padding:12px 18px;color:#fff;}
+  .phase .ph .n{font-weight:800;font-size:15px;}
+  .phase .ph .when{font-size:12px;opacity:.85;margin-left:auto;}
+  .p1 .ph{background:var(--gA);} .p2 .ph{background:#b3760a;} .p3 .ph{background:var(--navy2);}
+  .item{display:grid;grid-template-columns:1fr 96px 132px;gap:10px;align-items:center;padding:12px 18px;border-top:1px solid #eef2f6;font-size:13.8px;}
+  .item:first-of-type{border-top:none;}
+  .item .task{color:var(--ink);font-weight:600;}
+  .item .eff,.item .imp{font-size:12px;text-align:right;}
+  .item .eff{color:var(--muted);}
+  .item .imp b{color:#1f5f73;}
+  .tag{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#eef4f7;color:var(--navy2);border:1px solid #dceaf2;}
+  .rmhd{display:grid;grid-template-columns:1fr 96px 132px;gap:10px;padding:6px 44px 6px;font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);}
+  .rmhd .b,.rmhd .c{text-align:right;}
+
+  .foot-note{padding:2px 26px 20px;font-size:11.5px;color:var(--faint);}
+
+  /* ---- CTA ---- */
+  .cta{margin:34px 0 20px;background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#eaf1f8;border-radius:18px;padding:34px;text-align:center;}
+  .cta h3{font-size:24px;font-weight:800;color:#fff;}
+  .cta p{color:#c4d2e1;margin:9px auto 18px;max-width:520px;font-size:15px;}
+  .cta .row2{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#06251f;}
+  .cta .btn-ghost{border:1px solid rgba(255,255,255,.3);color:#eaf1f8;}
+
+  footer{padding:26px 0 40px;text-align:center;color:var(--faint);font-size:12.5px;}
+  footer b{color:var(--muted);}
+
+  @media(max-width:640px){
+    .grid{grid-template-columns:1fr;}
+    .item,.rmhd{grid-template-columns:1fr 64px 92px;}
+    .band{flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="brand">Don <span>Fournier</span></a>
+    <div class="navr">
+      <a href="/">← Back to site</a>
+      <a class="btn btn-primary" href="mailto:don@descrylabs.com?subject=AI%20Readiness%20Audit">Book a call →</a>
+    </div>
+  </div>
+</nav>
+
+<header class="intro">
+  <div class="wrap">
+    <div class="eyebrow">Sample deliverables</div>
+    <h1>What an AI Readiness Audit actually delivers</h1>
+    <p>Two of the artifacts you receive from a fixed-scope, fixed-fee audit — a scored <b>report card</b> and a prioritized <b>remediation roadmap</b>. The company and figures below are illustrative, but the format is exactly what lands on your desk.</p>
+  </div>
+</header>
+
+<!-- ============ REPORT CARD ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="lbl">1 · The report card</div>
+    <div class="card">
+      <div class="ctop"><div class="lh">Don Fournier<span>Independent AI &amp; Systems Consulting</span></div><div class="pill">Sample deliverable</div></div>
+      <div class="chd"><h2>AI Readiness Audit — Report Card</h2><p>Illustrative sample · a growing multi-location service business · 7 systems reviewed</p></div>
+      <div class="band">
+        <div class="score"><b>C+</b><span>Overall</span></div>
+        <div><div class="t">Real opportunities, no plan yet</div><div class="s">Good tools, bought one at a time — the cost is hiding in the gaps between them. All of it is fixable.</div></div>
+        <div class="stat"><b>~$140K/yr</b><span>upside identified</span></div>
+      </div>
+      <div class="grid">
+        <div class="row"><div class="g D">D</div><div class="rt"><b>Systems Integration</b><p>7 tools; the same data is re-keyed by hand across four of them.</p></div></div>
+        <div class="row"><div class="g C">C−</div><div class="rt"><b>Data &amp; Reporting</b><p>&ldquo;How did we do this month?&rdquo; takes a half-day of exports.</p></div></div>
+        <div class="row"><div class="g D">D+</div><div class="rt"><b>Workflow Automation</b><p>Intake, invoicing and reporting are still manual.</p></div></div>
+        <div class="row"><div class="g B">B−</div><div class="rt"><b>Cloud &amp; Spend</b><p>Solid stack; ~18% of cloud spend is recoverable.</p></div></div>
+        <div class="row"><div class="g C">C+</div><div class="rt"><b>Security &amp; Access</b><p>Basics in place; gaps in offboarding and MFA.</p></div></div>
+        <div class="row"><div class="g C">C</div><div class="rt"><b>AI Readiness</b><p>Clear, high-payoff use cases; no roadmap yet.</p></div></div>
+      </div>
+      <div class="findsec">
+        <div class="flbl">Top findings</div>
+        <div class="frow"><span>Double data entry across CRM + billing — same client typed twice.</span><b>~9 hrs/week</b></div>
+        <div class="frow"><span>Cloud waste — idle instances and an oversized database.</span><b>~$28K/yr</b></div>
+        <div class="frow"><span>Month-end reporting rebuilt by hand from CSV exports every month.</span><b>Automatable</b></div>
+      </div>
+      <div class="next"><b>What's next:</b> the roadmap below — quick wins to start this month, plus the builds worth doing, each with effort and payoff.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ROADMAP ============ -->
+<section class="block">
+  <div class="wrap">
+    <div class="lbl">2 · The remediation roadmap</div>
+    <div class="card">
+      <div class="ctop"><div class="lh">Don Fournier<span>Independent AI &amp; Systems Consulting</span></div><div class="pill">Sample deliverable</div></div>
+      <div class="chd"><h2>Remediation Roadmap</h2><p>The plan you walk away with — prioritized by payoff, from free quick wins to the few builds worth doing.</p></div>
+
+      <div class="rmhd"><div>Action</div><div class="b">Effort</div><div class="c">Payoff</div></div>
+
+      <div class="phase p1">
+        <div class="ph"><span class="n">Phase 1 — Quick wins</span><span class="when">Start this month</span></div>
+        <div class="item"><div class="task">Shut down idle cloud instances &amp; right-size the database</div><div class="eff">Low</div><div class="imp"><b>~$28K/yr</b></div></div>
+        <div class="item"><div class="task">Sync CRM ↔ billing to kill the double data entry</div><div class="eff">Low</div><div class="imp"><b>~9 hrs/week</b></div></div>
+        <div class="item"><div class="task">Enforce MFA and fix the employee offboarding checklist</div><div class="eff">Low</div><div class="imp"><b>Risk ↓</b></div></div>
+      </div>
+
+      <div class="phase p2">
+        <div class="ph"><span class="n">Phase 2 — Tune-ups</span><span class="when">1–2 months</span></div>
+        <div class="item"><div class="task">Automate month-end reporting from the source systems</div><div class="eff">Medium</div><div class="imp"><b>~1 day/mo back</b></div></div>
+        <div class="item"><div class="task">Consolidate two overlapping tools onto one</div><div class="eff">Medium</div><div class="imp"><b>Licenses ↓</b></div></div>
+        <div class="item"><div class="task">Standardize and document the client-intake workflow</div><div class="eff">Medium</div><div class="imp"><b>Faster onboarding</b></div></div>
+      </div>
+
+      <div class="phase p3">
+        <div class="ph"><span class="n">Phase 3 — Builds worth doing</span><span class="when">This quarter</span></div>
+        <div class="item"><div class="task">Client intake → CRM automation, end to end</div><div class="eff">Higher</div><div class="imp"><b>Scales, no new hire</b></div></div>
+        <div class="item"><div class="task">An AI assistant over your SOPs &amp; documents</div><div class="eff">Higher</div><div class="imp"><b>Answers in seconds</b></div></div>
+      </div>
+
+      <div class="foot-note">Sample deliverable — company, sequencing and figures are illustrative. Every engagement is fixed-scope, fixed-fee, 50% to start. Nothing is built without your written approval.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="wrap">
+  <div class="cta">
+    <h3>Want this for your business?</h3>
+    <p>A fixed-fee audit that maps your systems, grades what's working, and hands you a plan in plain English — usually within two weeks.</p>
+    <div class="row2">
+      <a class="btn btn-primary" href="mailto:don@descrylabs.com?subject=AI%20Readiness%20Audit">✉ Book a call</a>
+      <a class="btn btn-ghost" href="/#services">See the services →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>Don Fournier</b> · Independent AI &amp; Systems Consulting · Fort Worth, TX · Remote · 🎖 Veteran-owned</div>
+    <div style="margin-top:5px">don@descrylabs.com · dbfournier33.github.io</div>
+  </div>
+</footer>
+
+</body>
+</html>
