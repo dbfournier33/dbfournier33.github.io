@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Fournier;Don;;;
+FN:Don Fournier
+ORG:Descry Labs LLC
+TITLE:Founder — AI & Systems Consulting
+TEL;TYPE=CELL,VOICE:+19416996163
+EMAIL;TYPE=WORK,INTERNET:don@descrylabs.com
+URL:https://descrylabs.com
+ADR;TYPE=WORK:;;;Fort Worth;TX;;USA
+NOTE:AI and automation that actually ships. Veteran-owned.
+END:VCARD
