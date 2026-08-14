@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Sprints — Don Fournier / Descry Labs</title>
+<meta name="description" content="Fixed-scope, fixed-price build sprints from a senior engineer: MCP &amp; AI agents, RAG/LLM features, systems integration, and cloud-cost audits. You hand over a defined build; I ship it in weeks.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://descrylabs.com/build">
+<meta property="og:title" content="Build Sprints — fixed scope, fixed price, shipped in weeks">
+<meta property="og:description" content="You hand me a defined build; I ship it production-ready, documented, and yours. MCP/agents, RAG, integration, cloud-cost — from a senior engineer and Navy veteran.">
+<meta property="og:image" content="https://descrylabs.com/assets/og-home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#13243a; --navy2:#1f3a5f; --navy3:#2c4d77;
+    --accent:#2dd4bf; --accent2:#38bdf8;
+    --ink:#1b2733; --muted:#5e6b7a; --faint:#8a97a6;
+    --bg:#ffffff; --bg-soft:#f4f7fa; --card:#ffffff; --rule:#e4ebf2;
+    --shadow:0 1px 3px rgba(19,36,58,.06),0 8px 24px rgba(19,36,58,.06);
+    --shadow-lg:0 12px 40px rgba(19,36,58,.14);
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;}
+  body{font-family:"Inter",system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{line-height:1.18;letter-spacing:-.01em;}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--rule);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:16px;color:var(--navy);}
+  .brand span{color:var(--accent);}
+  .navlinks{display:flex;gap:26px;align-items:center;}
+  .navlinks a{font-size:14px;font-weight:500;color:var(--muted);transition:color .15s;}
+  .navlinks a:hover{color:var(--navy);}
+  .btn{display:inline-flex;align-items:center;gap:7px;font-weight:600;font-size:14px;border-radius:9px;padding:9px 16px;transition:transform .12s,box-shadow .15s,background .15s;}
+  .btn-primary{background:var(--navy);color:#fff;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(19,36,58,.22);}
+  @media(max-width:760px){ .navlinks a:not(.btn){display:none;} }
+
+  .hero{position:relative;background:radial-gradient(1200px 500px at 70% -10%,rgba(45,212,191,.18),transparent 60%),linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#eaf1f8;overflow:hidden;}
+  .hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:44px 44px;mask-image:radial-gradient(800px 380px at 75% 0%,#000,transparent 75%);pointer-events:none;}
+  .hero .wrap{position:relative;z-index:1;padding:70px 24px 60px;}
+  .hero h1{font-size:clamp(32px,5.6vw,54px);font-weight:800;letter-spacing:-.025em;margin:14px 0 10px;color:#fff;max-width:820px;}
+  .hero .role{font-size:clamp(15px,2vw,19px);font-weight:600;color:#bfe9e2;max-width:720px;}
+  .hero .tagline{margin-top:14px;max-width:680px;font-size:clamp(15px,1.8vw,17px);color:#c4d2e1;}
+  .hero .cta{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;}
+  .hero .btn-primary{background:var(--accent);color:#06251f;}
+  .hero .btn-primary:hover{box-shadow:0 10px 26px rgba(45,212,191,.35);}
+  .hero .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.28);color:#eaf1f8;}
+  .hero .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,.06);}
+  .meta{margin-top:24px;display:flex;gap:18px;flex-wrap:wrap;font-size:13.5px;color:#aebfd0;}
+  .meta b{color:#dce7f1;font-weight:600;}
+
+  section.block{padding:52px 0;}
+  section.block.alt{background:var(--bg-soft);}
+  .sec-head{max-width:720px;margin-bottom:26px;}
+  .sec-head h2{font-size:clamp(23px,3.2vw,32px);font-weight:800;color:var(--navy);margin-top:6px;letter-spacing:-.02em;}
+  .sec-head p{color:var(--muted);margin-top:10px;font-size:16px;}
+
+  /* ---- Tiers ---- */
+  .lead-tier{background:linear-gradient(160deg,#fff,#f7fbfc);border:1px solid #bfe9e2;border-radius:16px;padding:24px 26px;box-shadow:0 0 0 1px #bfe9e2,var(--shadow);display:flex;flex-wrap:wrap;align-items:center;gap:18px 26px;margin-bottom:18px;}
+  .lead-tier .lt-main{flex:1 1 340px;}
+  .lead-tier .st{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);}
+  .lead-tier h3{font-size:21px;font-weight:800;color:var(--navy);margin:5px 0 7px;}
+  .lead-tier p{font-size:14.5px;color:#46535f;max-width:640px;}
+  .lead-tier .lt-price{text-align:right;flex:0 0 auto;}
+  .price{font-family:"Fraunces",Georgia,serif;font-weight:600;font-size:30px;color:var(--navy2);letter-spacing:-.02em;line-height:1;}
+  .when{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:7px;}
+
+  .tiers{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  @media(max-width:780px){ .tiers{grid-template-columns:1fr;} .lead-tier .lt-price{text-align:left;} }
+  .tier{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:22px 24px;box-shadow:var(--shadow);transition:transform .15s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;}
+  .tier:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:#cfe9e3;}
+  .tier .kicker{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);}
+  .tier h3{font-size:19px;font-weight:800;color:var(--navy);margin:6px 0 4px;}
+  .tier .price{font-size:26px;margin:2px 0 2px;}
+  .tier .when{margin:0 0 10px;}
+  .tier p{font-size:14.3px;color:#46535f;}
+  .tier .proof{margin-top:auto;padding-top:14px;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--rule);}
+  .tier .proof b{color:var(--navy2);font-weight:700;}
+
+  /* ---- Steps ---- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  @media(max-width:780px){ .steps{grid-template-columns:1fr;} }
+  .step{background:#fff;border:1px solid var(--rule);border-radius:14px;padding:20px;box-shadow:var(--shadow);}
+  .step .n{font-family:"Fraunces",serif;font-weight:600;font-size:22px;color:var(--accent);}
+  .step h4{font-size:15.5px;color:var(--navy);font-weight:800;margin:6px 0 6px;}
+  .step p{font-size:13.8px;color:#46535f;}
+
+  .note{margin-top:20px;font-size:14.5px;color:var(--muted);max-width:780px;}
+  .note b{color:var(--navy);}
+
+  .contact{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 100%);color:#eaf1f8;border-radius:20px;padding:42px;text-align:center;}
+  .contact h2{font-size:clamp(24px,3.4vw,32px);font-weight:800;color:#fff;}
+  .contact p{color:#c4d2e1;margin:10px auto 22px;max-width:560px;}
+  .contact .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+  .contact .btn-primary{background:var(--accent);color:#06251f;}
+  .contact .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.3);color:#eaf1f8;}
+
+  footer{padding:30px 0;text-align:center;color:var(--faint);font-size:13px;border-top:1px solid var(--rule);}
+  footer .brand{font-size:14px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="brand">Don <span>Fournier</span></a>
+    <div class="navlinks">
+      <a href="/#build">What I build</a>
+      <a href="/#work">Work</a>
+      <a href="/">Home</a>
+      <a class="btn btn-primary" href="mailto:don@descrylabs.com?subject=Build%20sprint%20inquiry">Start a build →</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Build Sprints · Descry Labs · Fort Worth, TX · Remote</div>
+    <h1>Hand me a defined build. I ship it in weeks.</h1>
+    <div class="role">Fixed scope. Fixed price. Production-ready, documented, and yours — no open-ended hourly meter, no six-month "discovery."</div>
+    <p class="tagline">You know the price before we start, and I'm paid to <em>ship</em>, not to bill hours. Senior engineering for the hard 20% the commodity shops punt on.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#tiers">See the sprints ↓</a>
+      <a class="btn btn-ghost" href="mailto:don@descrylabs.com?subject=Build%20sprint%20inquiry">Start a build</a>
+    </div>
+    <div class="meta">
+      <span><b>🎖</b> Navy veteran · 23 yrs systems, cloud &amp; AI</span>
+      <span><b>✉</b> <a href="mailto:don@descrylabs.com">don@descrylabs.com</a></span>
+    </div>
+  </div>
+</header>
+
+<section class="block" id="tiers">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">The sprints</div><h2>Pick a build. Get a flat price.</h2><p>Every sprint ships with a written scope, weekly working demos, and a production-ready hand-off. Most people start small, prove the value, and expand.</p></div>
+
+    <div class="lead-tier">
+      <div class="lt-main">
+        <div class="st">Start small</div>
+        <h3>Mini-Build / Weekend Spike</h3>
+        <p>One tightly-scoped thing, built and shipped — a script, a small integration, a proof-of-concept, a targeted fix, or a single automation. The low-risk way to try working together before a bigger sprint.</p>
+      </div>
+      <div class="lt-price"><div class="price">$1,500</div><div class="when">2–4 days</div></div>
+    </div>
+
+    <div class="tiers">
+
+      <div class="tier">
+        <div class="kicker">Optimize · door-opener</div>
+        <h3>Cloud-Cost Optimization Audit</h3>
+        <div class="price">$3,500</div><div class="when">~1 week · or % of savings</div>
+        <p>I read the bill nobody's read, find the waste, and hand you a prioritized savings roadmap with real dollar figures — right-sizing, waste removal, the things to turn off. Optional implementation.</p>
+        <div class="proof"><b>Proof:</b> cut ~$300K/year on a six-figure cloud estate.</div>
+      </div>
+
+      <div class="tier">
+        <div class="kicker">Build · AI</div>
+        <h3>AI Agent &amp; MCP Integration Sprint</h3>
+        <div class="price">from $9,500</div><div class="when">2–3 weeks</div>
+        <p>A production MCP server / AI-agent integration wiring your tools, data, and workflows into Claude or GPT — with auth, guardrails, logging, and a runbook. AI in your real systems, not a demo.</p>
+        <div class="proof"><b>Proof:</b> built a private multi-model MCP agent control plane — zero-trust, 500+ tok/s.</div>
+      </div>
+
+      <div class="tier">
+        <div class="kicker">Build · AI</div>
+        <h3>RAG / LLM Feature Sprint</h3>
+        <div class="price">from $12,000</div><div class="when">2–4 weeks</div>
+        <p>A retrieval-augmented or LLM feature built into your product — ingestion, retrieval, prompting + guardrails — and an <em>eval harness</em> so quality is measured, not vibes.</p>
+        <div class="proof"><b>Proof:</b> AI systems-audit engine with an eval harness that catches regressions.</div>
+      </div>
+
+      <div class="tier">
+        <div class="kicker">Build · Integration</div>
+        <h3>Systems Integration Sprint</h3>
+        <div class="price">from $12,000</div><div class="when">2–4 weeks</div>
+        <p>2–3 disconnected systems (ERP / WMS / database / e-commerce / SaaS) wired into one reliable, event-driven, idempotent pipeline — monitored and documented.</p>
+        <div class="proof"><b>Proof:</b> 3-system integration (legacy DB + Dynamics 365 + WMS), zero → production in ~3 weeks.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap">
+    <div class="sec-head"><div class="eyebrow">How it works</div><h2>Scoped, shipped, done.</h2></div>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h4>15-min scoping call</h4><p>Tell me the build. I send back a one-page fixed scope and a flat price — usually within a day.</p></div>
+      <div class="step"><div class="n">2</div><h4>The sprint</h4><p>I build it, with a working demo every week so you always see progress. Scope-creep risk is mine, not yours.</p></div>
+      <div class="step"><div class="n">3</div><h4>Hand-off</h4><p>Production-ready build, documentation, and a short walkthrough. You own the delivered work product.</p></div>
+    </div>
+    <p class="note"><b>Fixed scope, fixed fee, 50% to start.</b> No hourly meters, no surprise invoices. Contracts run through <b>Descry Labs LLC</b>; you own the delivered work product, and I keep my own reusable frameworks so the price stays sharp.</p>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="contact">
+      <h2>Got a build in mind?</h2>
+      <p>Tell me what you need shipped. If it's a fit, you'll get a fixed scope, a flat price, and a timeline — usually within a day.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="mailto:don@descrylabs.com?subject=Build%20sprint%20inquiry">✉ Start a build</a>
+        <a class="btn btn-ghost" href="/">See my work →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="brand">Don <span style="color:var(--accent)">Fournier</span></div>
+    <div style="margin-top:6px">Build Sprints · Independent AI &amp; Systems Consulting · Fort Worth, TX · 🎖 Veteran-owned</div>
+    <div style="margin-top:12px;opacity:.65;font-size:.82em">© 2026 Descry Labs LLC · Fort Worth, Texas</div>
+  </div>
+</footer>
+
+</body>
+</html>
