@@ -1,42 +1,24 @@
-# Don Fournier — Portfolio Site
+# descrylabs.com
 
-A self-contained, single-page portfolio (no build step, no dependencies) ready for **GitHub Pages**.
+The live Descry Labs site, served by GitHub Pages at **descrylabs.com** (see `CNAME`).
+No build step and no dependencies.
 
 ```
-portfolio-site/
-├── index.html                     # the whole site (HTML + CSS + a few lines of JS)
-├── assets/
-│   └── Don_Fournier_Resume.pdf    # linked by the "Résumé" buttons
-├── .nojekyll                      # tells GitHub Pages to serve files as-is
-├── .gitignore
-└── README.md
+index.html              # the whole site: License & SaaS Cost Recovery
+favicon.svg
+card/                   # digital business card (descrylabs.com/card) + vCard
+assets/don-headshot.jpg # used by the card
+CNAME                   # descrylabs.com — do not remove
+.nojekyll
 ```
 
-## Preview locally
-Just open `index.html` in a browser (double-click), or serve it:
-```bash
-cd portfolio-site
-python3 -m http.server 8080   # then visit http://localhost:8080
-```
+Pushes to `main` go live within a minute or two. Make changes on a branch and merge
+by pull request.
 
-## Deploy to GitHub Pages
-1. Create a new repo on GitHub — e.g. `portfolio` (or `dbfournier.github.io` for a root URL).
-2. From this folder:
-   ```bash
-   git remote add origin https://github.com/<your-username>/portfolio.git
-   git branch -M main
-   git push -u origin main
-   ```
-3. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch → Branch: `main` / `/ (root)` → Save.**
-4. Your site goes live at `https://<your-username>.github.io/portfolio/` within a minute or two.
-   - If you named the repo `<your-username>.github.io`, it serves at `https://<your-username>.github.io/`.
+## Related
 
-### Custom domain (optional)
-Add a `CNAME` file containing your domain (e.g. `donfournier.dev`), then point a DNS `CNAME` record at `<your-username>.github.io`. Enable HTTPS in Settings → Pages.
-
-## Edit notes
-- **Add LinkedIn / GitHub:** open `index.html`, find `const LINKS = { linkedin: "", github: "" };` near the bottom, and paste your URLs. They'll auto-appear in the hero and contact section.
-- **Update résumé:** replace `assets/Don_Fournier_Resume.pdf`.
-- All case-study copy lives inline in `index.html` under the `Selected Work` section; the full write-ups are in the parent `../portfolio/` folder.
-
-> Confidentiality: case studies are genericized (no employer/customer/vendor names in the body, no exact internal financials, no confidential architecture). Phone and street address are intentionally omitted from this public page.
+- **Business plan, outreach drafts, and session turnover** live in the private repo
+  `dbfournier33/descrylabs-site` (`outreach/`, `TURNOVER.md`). This repo is the single
+  source for the live site; `descrylabs-site/public/` is retired once this merges.
+- Copy rules: plain and short. Proof is limited to verified, quantified results,
+  presented as the founder's results as an employee, never as Descry client results.
